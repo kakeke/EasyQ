@@ -1,0 +1,16 @@
+<div class="container" style="margin-top: 50px">
+	<div class="row">
+		<div class="col-lg-2"></div>
+		<div class="col-lg-8" style="text-align: center;">
+			ようこそ<%= current_user.name %>さん
+			<% if current_user.profile.nil? %>
+			<div>
+				<h4>あなたのことを知ってもらうために、自己紹介文を設定しましょう。</h4>
+				<%= link_to "ユーザー設定画面へ", edit_user_path %>
+
+		    </div>
+			<% end %>
+		</div>
+		<div class="col-lg-2"></div>
+	</div>
+</div>
