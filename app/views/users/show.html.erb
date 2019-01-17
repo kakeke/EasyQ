@@ -2,15 +2,28 @@
 	<div class="row">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8" style="text-align: center;">
-			ようこそ<%= current_user.name %>さん
-			<% if current_user.profile.nil? %>
-			<div>
-				<h4>あなたのことを知ってもらうために、自己紹介文を設定しましょう。</h4>
-				<%= link_to "ユーザー設定画面へ", edit_user_path %>
-
-		    </div>
+			<% if current_user && current_user.id = @user.id %>
+			    <% if current_user.profile.nil? %>
+			        <div class="profile-introduction">
+		                <h4>あなたのことを知ってもらうために、自己紹介文を設定しましょう。</h4>
+		                <%= link_to "ユーザー設定画面へ", edit_user_path %>
+	                </div>
+                <% end %>
+                <% else %>
+			<% end %>
+			<%= image_tag (@user.image_id), class:"img" %>
+			<h2><%= @user.name %></h2>
+			<h4>最終ログイン<%= @user.last_login_at %></h4>
+			<div><%= @user.profile %></div>
+			<% if current_user && current_user.id = @user.id %>
+			<h2>Qの投稿</h2>
+			    <%= form_for @question do |f| %>
+			        <div><%= f.text_field :target %>に聞きたい！</div>
+			        <div><%= f.text_field :question %></div>
+			        <%= f.submit "Qを投稿する" %>
+			    <% end %>
 			<% end %>
 		</div>
 		<div class="col-lg-2"></div>
 	</div>
-</div>
+

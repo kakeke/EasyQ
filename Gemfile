@@ -70,11 +70,8 @@ gem 'omniauth-google-oauth2'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
-gem 'will_paginate',  '3.1.6'
-gem 'bootstrap-will_paginate', '1.0.0'
-
-gem 'refile', require: 'refile/rails', github: 'manfe/refile'
-gem 'refile-mini_magick'
+gem 'rmagick'
+gem 'mini_magick'
 
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
@@ -82,3 +79,6 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 
 gem 'google-analytics-rails'
+
+gem 'carrierwave'
+gem 'fog-aws'

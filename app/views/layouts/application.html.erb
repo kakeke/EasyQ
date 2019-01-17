@@ -12,19 +12,21 @@
     <header style="background-color: #9933CC; height: 60px;">
       <div class="container">
         <div class="row">
-          <div class="col-xs-4"></div>
-          <div class="col-xs-4">
+          <div class="col-lg-4"></div>
+          <div class="col-lg-4">
             <h2 style="text-align: center;"><a href="/" style="color: white;">EasyQ</a></h2>
          </div>
-          <div class="col-xs-4"></div>
+          <div class="col-lg-4">
+            <% if current_user %>
+            Signed in as <strong><%= current_user.name %></strong>!
+            <%= link_to "Sign out", signout_path, id: "sign_out" %>
+            <%#= image_tag(current_user.image_id, :size => "12×12", class: "img") %>
+            <% end %>
+          </div>
         </div>
       </div>
     </header>
     <div>
-      <% if current_user %>
-        Signed in as <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% end %>
     </div>
     <div>
     <%= yield %>
