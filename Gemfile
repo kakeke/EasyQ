@@ -67,9 +67,6 @@ gem 'omniauth-facebook'
 
 gem 'omniauth-google-oauth2'
 
-gem 'devise-i18n'
-gem 'devise-i18n-views'
-
 gem 'rmagick'
 gem 'mini_magick'
 

@@ -11,7 +11,13 @@
                 <% end %>
                 <% else %>
 			<% end %>
-			<%= image_tag (@user.image_id), class:"img" %>
+
+			<% if @user.image_id.blank? %>
+			    <%= image_tag (@user.image), class:"img" %>
+			<% else %>
+			    <%= image_tag (@user.image_id), class:"img" %>
+			<% end %>
+
 			<h2><%= @user.name %></h2>
 			<h4>最終ログイン<%= @user.last_login_at %></h4>
 			<div><%= @user.profile %></div>

@@ -4,17 +4,17 @@ class QuestionsController < ApplicationController
   end
 
   def create
-  	question = Question.new(questions_params)
-  	img = QuestionsHelper.build(question.question)
-  	question.question_image_id = img.tempfile.open.read
-  	question.user_id = current_user.id
-  	question.question_day = Date.today
-  	if question.save
-  	   redirect_to question_path(question.id)
+  	@question = Question.new(questions_params)
+    @question.question_image_id = QuestionsHelper.build(@question.question).tempfile.open.read
+  	@question.user_id = current_user.id
+  	@question.question_day = Date.today
+  	if @question.save
+  	   redirect_to question_path(@question.id)
   	else
   	   redirect_to users_path(current_user.id)
   	end
   end
+
 
   def destroy
   	
