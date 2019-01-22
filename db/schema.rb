@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_01_16_054640) do
     t.string "uid"
     t.string "name"
     t.string "email"
+    t.string "image"
     t.string "image_id"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
