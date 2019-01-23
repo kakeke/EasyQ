@@ -3,7 +3,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
     create_table :questions do |t|
       t.string :target
       t.string :question
-      t.string :question_image_id
+      t.binary :question_image
       t.datetime :question_day
       t.integer :user_id
 

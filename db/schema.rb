@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_01_16_054640) do
   create_table "questions", force: :cascade do |t|
     t.string "target"
     t.string "question"
-    t.string "question_image_id"
+    t.binary "question_image"
     t.datetime "question_day"
     t.integer "user_id"
     t.datetime "created_at", null: false

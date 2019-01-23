@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
 
   def create
   	@question = Question.new(questions_params)
-    @question.question_image_id = QuestionsHelper.build(@question.question).tempfile.open.read
+    @question.question_image = QuestionsHelper.build(@question.question).tempfile.open.binmode.read
   	@question.user_id = current_user.id
   	@question.question_day = Date.today
   	if @question.save
@@ -22,6 +22,6 @@ class QuestionsController < ApplicationController
 
   private
   	def questions_params
-  		params.require(:question).permit(:target, :question, :question_image_id, :question_day, :user_id)
+  		params.require(:question).permit(:target, :question, :question_image, :question_day, :user_id)
   	end
 end
