@@ -1,17 +1,22 @@
 class QuestionsController < ApplicationController
+  include QuestionsHelper
+
   def show
   	@question = Question.find(params[:id])
   end
 
   def create
   	@question = Question.new(questions_params)
-    @question.question_image = QuestionsHelper.build(@question.question).tempfile.open.binmode.read
   	@question.user_id = current_user.id
   	@question.question_day = Date.today
   	if @question.save
+       create_image(@question)
   	   redirect_to question_path(@question.id)
   	else
-  	   redirect_to users_path(current_user.id)
+       puts '--------------------------------'
+       @question.errors.full_messages
+       puts '--------------------------------'
+  	   redirect_to user_path(current_user.id)
   	end
   end
 
@@ -22,6 +27,6 @@ class QuestionsController < ApplicationController
 
   private
   	def questions_params
-  		params.require(:question).permit(:target, :question, :question_image, :question_day, :user_id)
+  		params.require(:question).permit(:target, :question, :question_day, :user_id)
   	end
 end

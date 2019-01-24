@@ -1,45 +1,63 @@
 module QuestionsHelper
-  require 'mini_magick'
-  require 'securerandom'
-
-  BASE_IMAGE_PATH = './public/images/base_image.jpg'.freeze
-  GRAVITY = 'center'.freeze
-  TEXT_POSITION = '0,0'.freeze
-  FONT = './app/assets/fonts/komorebi-gothic.ttf'.freeze
-  FONT_SIZE = 65
-  INDENTION_COUNT = 11
-  ROW_LIMIT = 8
-
-  class << self
-    def build(text)
-      text = prepare_text(text)
-      @image = MiniMagick::Image.open(BASE_IMAGE_PATH)
-      configuration(text)
+  def create_image(q)
+    Tempfile.create(["#{q.token}", '.png'], :encoding => 'ascii-8bit') do | file |
+      file.write(IMGKit.new(get_html(q.question), quality: 20, width: 800).to_png)
+      file.rewind
+      @question.question_image.attach(io: file, filename: "q_#{q.id}.png", content_type: "image/png")
     end
+  end
 
-
-    def write(text)
-      build(text)
-      @image.write uniq_file_name
-    end
-
-    private
-
-    def uniq_file_name
-      "#{SecureRandom.hex}.png"
-    end
-
-    def configuration(text)
-      @image.combine_options do |config|
-        config.font FONT
-        config.gravity GRAVITY
-        config.pointsize FONT_SIZE
-        config.draw "text #{TEXT_POSITION} '#{text}'"
-      end
-    end
-
-    def prepare_text(text)
-      text.scan(/.{1,#{INDENTION_COUNT}}/)[0...ROW_LIMIT].join("\n")
-    end
+  def get_html(body)
+    <<~HTML
+    <!DOCTYPE html>
+<html lang="ja">
+  <head>
+	<meta charset="UTF-8">
+	<style>
+	  @charset "UTF-8";
+	  html {
+		  font-family: sans-serif;
+		  -ms-text-size-adjust: 100%;
+		  -webkit-text-size-adjust: 100%;
+	  }
+	  body {
+		  width: 800px;
+		  margin: 0;
+	  }
+	  .q-frame {
+		  width: 100%;
+		  background-color: #FA514B;
+		  padding: 25px 25px 10px 25px;
+	  }
+	  .q-frame .q-body {
+          vertical-align: middle;
+          text-align: center;
+          min-height: 250px;
+		  font-size: 2.6em;
+		  background-color: white;
+		  padding: 1.3em;
+		  border-radius: 5px;
+	  }
+	  .q-frame .q-icon {
+		  font-size: 2.2em;
+		  padding: 5px 0px 0px 0px;
+		  margin: 0px;
+		  color: white;
+		  border-radius: 5px;
+	  }
+	</style>
+  </head>
+  <body>
+	<div class="q-frame">
+	  <div class="q-body">
+		#{body}
+	  </div>
+	  <div class="q-icon">
+		EasyQ
+	  </div>
+	</div>
+  </body>
+</html>
+    HTML
   end
 end

@@ -67,9 +67,6 @@ gem 'omniauth-facebook'
 
 gem 'omniauth-google-oauth2'
 
-gem 'rmagick'
-gem 'mini_magick'
-
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 
@@ -77,5 +74,5 @@ gem 'jquery-rails'
 
 gem 'google-analytics-rails'
 
-gem 'carrierwave'
-gem 'fog-aws'
+gem 'imgkit'
+gem 'wkhtmltoimage-binary'

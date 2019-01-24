@@ -26,6 +26,7 @@
 			    <%= form_for @question do |f| %>
 			        <div><%= f.text_field :target %>に聞きたい！</div>
 			        <div><%= f.text_field :question %></div>
+			        <%= f.file_field :question_image %>
 			        <%= f.submit "Qを投稿する" %>
 			    <% end %>
 			<% end %>
