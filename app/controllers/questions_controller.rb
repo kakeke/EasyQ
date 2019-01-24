@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   include QuestionsHelper
 
   def show
-  	@question = Question.find(params[:id])
+  	@question = Question.find_by(token: params[:token])
   end
 
   def create
@@ -11,11 +11,8 @@ class QuestionsController < ApplicationController
   	@question.question_day = Date.today
   	if @question.save
        create_image(@question)
-  	   redirect_to question_path(@question.id)
+  	   redirect_to question_url(token: @question.token)
   	else
-       puts '--------------------------------'
-       @question.errors.full_messages
-       puts '--------------------------------'
   	   redirect_to user_path(current_user.id)
   	end
   end

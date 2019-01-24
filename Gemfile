@@ -76,3 +76,5 @@ gem 'google-analytics-rails'
 
 gem 'imgkit'
 gem 'wkhtmltoimage-binary'
+
+gem 'aws-sdk'
