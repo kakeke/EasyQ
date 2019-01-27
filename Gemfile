@@ -64,8 +64,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails'
 
 gem 'omniauth-facebook'
-
 gem 'omniauth-google-oauth2'
+gem 'omniauth-line'
 
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'

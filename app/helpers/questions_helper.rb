@@ -26,7 +26,7 @@ module QuestionsHelper
 	  }
 	  .q-frame {
 		  width: 100%;
-		  background-color: #FA514B;
+		  background-color: #93FFAB;
 		  padding: 25px 25px 10px 25px;
 	  }
 	  .q-frame .q-body {
@@ -39,6 +39,7 @@ module QuestionsHelper
 		  border-radius: 5px;
 	  }
 	  .q-frame .q-icon {
+	      text-align: right;
 		  font-size: 2.2em;
 		  padding: 5px 0px 0px 0px;
 		  margin: 0px;
