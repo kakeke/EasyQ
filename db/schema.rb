@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2019_01_24_062149) do
 
   create_table "answers", force: :cascade do |t|
     t.string "answer"
+    t.string "ip"
     t.integer "question_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

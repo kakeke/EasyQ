@@ -9,7 +9,6 @@
 			        さんのQです</h3>
 			</div>
 			<div>
-				<h2><%= @question.target %>に聞きたい！</h2>
 				<%= image_tag @question.question_image %>
 			</div>
 			<div class="question_day">
@@ -26,13 +25,13 @@
 				    <h3>まだ回答がありません</h3>
 				<% else %>
 				    <% @question.answers.each do |f| %>
-				    <div>
+				    <div class="answer_body">
 				        <%= f.answer %>
 				    </div>
 				    <% end %>
 				<% end %>
 			</div>
-
+            <div><%= notice %></div>
 		    <div>
 			    <h2>回答する</h2>
 			    <%= form_for @answer do |f| %>
