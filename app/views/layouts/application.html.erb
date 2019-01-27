@@ -20,7 +20,7 @@
             <% if current_user %>
             Signed in as <strong><%= current_user.name %></strong>!
             <%= link_to "Sign out", signout_path, id: "sign_out" %>
-            <%#= image_tag(current_user.image_id, :size => "12×12", class: "img") %>
+            <%#= image_tag(current_user.image, :size => "12×12", class: "img") %>
             <% end %>
           </div>
         </div>

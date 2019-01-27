@@ -1,3 +1,47 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
-<%= image_tag @question.question_image %>
+<div class="container" style="margin-top: 50px">
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10" style="text-align: center;">
+			<div class="user_link">
+				<h3><%= link_to user_path(@question.user) do %>
+					    <%= @question.user.name %>
+			        <% end %>
+			        さんのQです</h3>
+			</div>
+			<div>
+				<h2><%= @question.target %>に聞きたい！</h2>
+				<%= image_tag @question.question_image %>
+			</div>
+			<div class="question_day">
+				投稿日<%= @question.question_day.month %>月<%= @question.question_day.day %>日
+			</div>
+
+			<div class="answers_count">
+				回答数<%= @question.answers.count %>
+			</div>
+
+			<div>
+				<h2>回答一覧</h2>
+				<% if @question.answers.blank? %>
+				    <h3>まだ回答がありません</h3>
+				<% else %>
+				    <% @question.answers.each do |f| %>
+				    <div>
+				        <%= f.answer %>
+				    </div>
+				    <% end %>
+				<% end %>
+			</div>
+
+		    <div>
+			    <h2>回答する</h2>
+			    <%= form_for @answer do |f| %>
+			        <%= f.text_field :answer %>
+			        <%= f.hidden_field :question_id, :value => @question.id %>
+			    <%= f.submit "回答する" %>
+			    <% end %>
+		    </div>
+	    </div>
+		<div class="col-lg-1"></div>
+	</div>
+</div>

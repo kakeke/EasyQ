@@ -2,9 +2,12 @@ class Question < ApplicationRecord
 	require 'securerandom'
 
 	belongs_to :user
+	has_many :answers, dependent: :destroy
 	has_one_attached :question_image
 	before_create :generate_token
 
+	validates :question, presence: true, length: { maximum: 140 }
+	
   private
 
   def generate_token

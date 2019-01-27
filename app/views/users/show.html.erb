@@ -3,7 +3,7 @@
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8" style="text-align: center;">
 			<% if current_user && current_user.id = @user.id %>
-			    <% if current_user.profile.nil? %>
+			    <% if current_user.profile.blank? %>
 			        <div class="profile-introduction">
 		                <h4>あなたのことを知ってもらうために、自己紹介文を設定しましょう。</h4>
 		                <%= link_to "ユーザー設定画面へ", edit_user_path %>
@@ -20,14 +20,30 @@
 
 			<h2><%= @user.name %></h2>
 			<h4>最終ログイン<%= @user.last_login_at %></h4>
-			<div><%= @user.profile %></div>
+			<div>
+				<%= @user.profile %>
+			</div>
+
+			<div class="q_form">
 			<% if current_user && current_user.id = @user.id %>
-			<h2>Qの投稿</h2>
+			<h2 class="q_form_title">Qの投稿</h2>
 			    <%= form_for @question do |f| %>
-			        <div><%= f.text_field :target %>に聞きたい！</div>
-			        <div><%= f.text_field :question %></div>
-			        <%= f.submit "Qを投稿する" %>
+			        <div class="target_form"><%= f.text_field :target, style: "width: 45%; border-radius: 100px;" %><strong>に聞きたい！</strong></div>
+			        <div><%= f.text_area :question, style: "width: 60%; height:100px; border-radius: 20px;" %></div>
+			        <%= f.submit "Qを投稿する", class:"btn btn-success" %>
 			    <% end %>
+			<% end %>
+		    </div>
+
+			<h2>最近投稿したQ</h2>
+			<% @user.questions.each do |q| %>
+			<div class="q_list">
+			    <div class="q_image">
+			        <%= link_to question_path(q.token) do %>
+			            <%= image_tag q.question_image, size: "425x220" %>
+			        <% end %>
+			    </div>
+			</div>
 			<% end %>
 		</div>
 		<div class="col-lg-2"></div>

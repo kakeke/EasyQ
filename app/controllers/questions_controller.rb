@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
 
   def show
   	@question = Question.find_by(token: params[:token])
+    @answer = Answer.new
   end
 
   def create
@@ -24,6 +25,6 @@ class QuestionsController < ApplicationController
 
   private
   	def questions_params
-  		params.require(:question).permit(:target, :question, :question_day, :user_id)
+  		params.require(:question).permit(:target, :question, :question_day, :question_image, :user_id)
   	end
 end

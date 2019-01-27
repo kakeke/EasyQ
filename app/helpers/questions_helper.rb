@@ -1,13 +1,13 @@
 module QuestionsHelper
   def create_image(q)
     Tempfile.create(["#{q.token}", '.png'], :encoding => 'ascii-8bit') do | file |
-      file.write(IMGKit.new(get_html(q.question), quality: 20, width: 800).to_png)
+      file.write(IMGKit.new(get_html(q.question, q.target), quality: 20, width: 800).to_png)
       file.rewind
       @question.question_image.attach(io: file, filename: "q_#{q.id}.png", content_type: "image/png")
     end
   end
 
-  def get_html(body)
+  def get_html(body, target)
     <<~HTML
     <!DOCTYPE html>
 <html lang="ja">
@@ -50,6 +50,7 @@ module QuestionsHelper
   <body>
 	<div class="q-frame">
 	  <div class="q-body">
+	    「#{target}」に聞きたい！<br>
 		#{body}
 	  </div>
 	  <div class="q-icon">
