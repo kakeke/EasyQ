@@ -14,15 +14,15 @@
 				<div class="col-lg-12" style="margin-top: 50px;">
 					<h3>外部サービスで簡単登録・ログイン</h3>
 					<%= button_to "/auth/google_oauth2", id: "sign_in", class:"btn btn-danger" do %>
-					<h3><i class="fa fa-google"></i> Googleで登録・ログイン</h3>
+					<h3><%= icon("fab", "google") %></i> Googleで登録・ログイン</h3>
 					<% end %>
 
 					<%= button_to "/auth/facebook", id: "sign_in", class:"btn btn-primary" do %>
-					<h3><i class="fa fa-facebook"></i> Facebookで登録・ログイン</h3>
+					<h3><%= icon("fab", "facebook") %></i> Facebookで登録・ログイン</h3>
 					<% end %>
 
 					<%= button_to "/auth/line", id: "sign_in", class:"btn btn-success" do %>
-					<h3><i class="fa fa-line"></i> Lineで登録・ログイン</h3>
+					<h3><%= icon("fab", "line") %> Lineで登録・ログイン</h3>
 					<% end %>
 				</div>
 			</div>

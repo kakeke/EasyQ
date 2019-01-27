@@ -68,7 +68,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-line'
 
 gem 'bootstrap-sass'
-gem 'font-awesome-rails'
+gem 'font-awesome-sass'
 
 gem 'jquery-rails'
 
