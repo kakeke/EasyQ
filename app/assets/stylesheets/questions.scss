@@ -8,17 +8,23 @@
 	margin: 0 auto;
 }
 
-.question_day {
-	float: left;
+.question_data {
+	width: 850px;
+	height: 100px;
+	margin: 0 auto;
 }
 
-.answers_count {
+.question_day ,.answers_count {
 	float: left;
+	font-size: 30px;
+	height: 100px;
+	width: 425px;
 }
 
 .answer_body {
 	font-size: 30px;
-	background-color: gray;
+	background-color: #FFFAFA;
+	box-shadow:0px 0px 5px;
 	border-radius: 5px;
 	height: 100px;
 	width: 850px;

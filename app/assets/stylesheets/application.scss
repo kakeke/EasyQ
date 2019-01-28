@@ -24,6 +24,10 @@
   font-family: 'HG正楷書体-PRO'
 }
 
+footer {
+	height: 50px;
+}
+
 nav.globalMenuSp {
     position: fixed;
     z-index: 2;
@@ -75,7 +79,7 @@ nav.globalMenuSp.active {
     right: 13px;
     top: 12px;
     width: 42px;
-    height: 51px;
+    height: 45px;
     cursor: pointer;
     z-index: 3;
     background: #666;
@@ -104,11 +108,19 @@ nav.globalMenuSp.active {
 .navToggle span:nth-child(3) {
     top: 27px;
 }
- 
-.navToggle span:nth-child(4) {
-    border: none;
-    color: #eee;
-    font-size: 9px;
-    font-weight: bold;
-    top: 34px;
+
+.navToggle.active span:nth-child(1) {
+    top: 18px;
+    left: 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.navToggle.active span:nth-child(2),
+.navToggle.active span:nth-child(3) {
+    top: 18px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
 }

@@ -4,7 +4,7 @@
 		<div class="col-lg-10" style="text-align: center;">
 
 			<textarea class="q_url" id="bar"><%= request.url %></textarea>
-			<button class="clipboard-btn btn btn-success" data-clipboard-action="copy" data-clipboard-target="#bar">
+			<button class="clipboard-btn btn btn-success" data-clipboard-action="copy" data-clipboard-target="#bar" data-toggle="popover" data-content="クリップボードにコピーしました。">
 			このボタンを押してURLをコピーしてシェアしよう！
 		    </button>
 
@@ -17,13 +17,15 @@
 			<div>
 				<%= image_tag @question.question_image %>
 			</div>
-			<div class="question_day">
-				投稿日<%= @question.question_day.month %>月<%= @question.question_day.day %>日
-			</div>
+			<div class="question_data">
+			    <div class="question_day">
+				    投稿日<%= @question.question_day.month %>月<%= @question.question_day.day %>日
+			    </div>
 
-			<div class="answers_count">
-				回答数<%= @question.answers.count %>
-			</div>
+			    <div class="answers_count">
+				    回答数<%= @question.answers.count %>
+			    </div>
+		    </div>
 
 			<div>
 				<h2>回答一覧</h2>
@@ -50,3 +52,9 @@
 		<div class="col-lg-1"></div>
 	</div>
 </div>
+
+<script>
+$(function () {
+	$('[data-toggle="popover"]').popover();
+});
+</script>
