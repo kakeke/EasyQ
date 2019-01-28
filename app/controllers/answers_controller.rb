@@ -13,11 +13,18 @@ class AnswersController < ApplicationController
 		end
 	end
 
+	def update
+	end
+
 	def destroy
 	end
 
 	private
   	def answers_params
   		params.require(:answer).permit(:answer, :ip, :question_id)
+  	end
+
+  	def report_params
+  		params.require(:answer).permit(:report)
   	end
 end

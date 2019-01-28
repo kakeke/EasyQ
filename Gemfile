@@ -77,4 +77,9 @@ gem 'google-analytics-rails'
 gem 'imgkit'
 gem 'wkhtmltoimage-binary'
 
+gem 'clipboard-rails'
+
 gem 'aws-sdk'
+
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"

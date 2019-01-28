@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header style="background-color: #9933CC; height: 60px;">
+    <header style="background-color: #9933CC; height: 70px;">
       <div class="container">
         <div class="row">
           <div class="col-lg-4"></div>
@@ -18,9 +18,18 @@
          </div>
           <div class="col-lg-4">
             <% if current_user %>
-            Signed in as <strong><%= current_user.name %></strong>!
-            <%= link_to "Sign out", signout_path, id: "sign_out" %>
-            <%#= image_tag(current_user.image, :size => "12×12", class: "img") %>
+            <div class="navToggle">
+              <span></span><span></span><span></span><span>menu</span>
+            </div>
+
+            <nav class="globalMenuSp">
+              <ul>
+                <li><%= link_to "ユーザー設定", edit_user_path(current_user.id) %></li>
+                <li><a href="#">Q投稿履歴</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+                <li><%= link_to "ログアウト", signout_path, id: "sign_out" %></li>
+              </ul>
+            </nav>
             <% end %>
           </div>
         </div>
@@ -31,3 +40,17 @@
     <%= yield %>
   </body>
 </html>
+
+<script>
+  $(function() {
+    $('.navToggle').click(function() {
+        $(this).toggleClass('active');
+ 
+        if ($(this).hasClass('active')) {
+            $('.globalMenuSp').addClass('active');
+        } else {
+            $('.globalMenuSp').removeClass('active');
+        }
+    });
+});
+</script>

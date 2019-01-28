@@ -2,30 +2,31 @@
     <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8" style="text-align: center;">
-            <div>
-            <%= form_for @user do |f| %>
-            <div>
-                <%= f.label "ニックネーム" %><br>
-                <%= f.text_field :name %>
-            </div>
+            <div class="edit_form">
+                <h2><strong>ユーザー設定</strong></h2>
+                <%= form_for @user do |f| %>
+                <div>
+                    <%= f.label "ニックネーム" %><br>
+                    <%= f.text_field :name %>
+                </div>
 
-            <div>
-                <%= f.label "プロフィール画像" %><br>
-                <%#= f.attachment_field :image, style:"padding-left: 35%;" %>
-            </div>
+                <div>
+                    <%= f.label "プロフィール画像" %><br>
+                    <%= f.attachment_field :user_image %>
+                </div>
 
-            <div>
-                <%= f.label "メールアドレス" %><br>
-                <%= f.text_field :email %>
-            </div>
+                <div>
+                    <%= f.label "メールアドレス" %><br>
+                    <%= f.text_field :email %>
+                </div>
 
-            <div>
-                <%= f.label "自己紹介文" %><br>
-                <%= f.text_field :profile %>
+                <div>
+                    <%= f.label "自己紹介文" %><br>
+                    <%= f.text_area :profile, style: "height:200px;" %>
+                </div>
+                <%= f.submit "更新する", class:"btn btn-success" %>
+                <% end %>
             </div>
-            <%= f.submit "更新する" %>
-            <% end %>
-        </div>
         </div>
         <div class="col-lg-2"></div>
     </div>

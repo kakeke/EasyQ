@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_01_24_062149) do
   create_table "answers", force: :cascade do |t|
     t.string "answer"
     t.string "ip"
+    t.integer "report", default: 0
     t.integer "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -58,13 +59,13 @@ ActiveRecord::Schema.define(version: 2019_01_24_062149) do
     t.string "name"
     t.string "email"
     t.string "image"
-    t.string "image_id"
+    t.string "user_image_id"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
     t.string "profile"
     t.datetime "last_login_at"
     t.datetime "deleted_at"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

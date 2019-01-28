@@ -7,11 +7,22 @@
 	padding-top: 10px;
 }
 
+.user_data {
+	background-color: #FFFAFA;
+	box-shadow:0px 0px 5px;
+}
+
 .img {
 	margin-top: 10px;
     border-radius: 50%;
     width:  180px;
     height: 180px;
+}
+
+.user_profile {
+	font-size: 20px;
+	margin: 50px 80px;
+	padding: 10px;
 }
 
 .q_form {
@@ -32,4 +43,11 @@
 
 .q_image {
 	margin-bottom: 5px;
+}
+
+.edit_form {
+	font-size: 20px;
+	padding: 50px 100px;
+	margin: 100px;
+	background-color: #CCFFCC;
 }

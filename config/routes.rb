@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :top, only: [:index]
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :questions, only: [:show, :create, :destroy], param: :token
-  resources :answers, only: [:create, :destroy]
+  resources :answers, only: [:create, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

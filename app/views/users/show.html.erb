@@ -2,34 +2,46 @@
 	<div class="row">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8" style="text-align: center;">
-			<% if current_user && current_user.id = @user.id %>
-			    <% if current_user.profile.blank? %>
-			        <div class="profile-introduction">
-		                <h4>あなたのことを知ってもらうために、自己紹介文を設定しましょう。</h4>
+			<div class="user_data">
+				<% if current_user && current_user.id = @user.id %>
+				    <% if current_user.profile.blank? %>
+				    <div class="profile-introduction">
+				    	<h4>あなたのことを知ってもらうために、自己紹介文を設定しましょう。</h4>
 		                <%= link_to "ユーザー設定画面へ", edit_user_path %>
 	                </div>
-                <% end %>
+                    <% end %>
                 <% else %>
-			<% end %>
+			    <% end %>
 
-			<% if @user.image_id.blank? %>
-			    <%= image_tag (@user.image), class:"img" %>
-			<% else %>
-			    <%= image_tag (@user.image_id), class:"img" %>
-			<% end %>
+			    <% if @user.user_image.blank? %>
+			        <%= image_tag (@user.image), class:"img" %>
+			    <% else %>
+			        <%= attachment_image_tag @user, :user_image, :fill, 180, 180, class:"img" %>
+			    <% end %>
 
-			<h2><%= @user.name %></h2>
-			<h4>最終ログイン<%= @user.last_login_at %></h4>
-			<div>
-				<%= @user.profile %>
+			    <% if current_user && current_user.id = @user.id %>
+			        <%= link_to edit_user_path do %>
+			            <span class="setting_button"><%= icon("fas", "wrench", class: "fa-2x") %></span>
+			        <% end %>
+			    <% end %>
+
+			    <h2><%= @user.name %></h2>
+			    <h4>最終ログイン<%= @user.last_login_at %></h4>
+			    <div class="user_profile">
+				    <%= @user.profile %>
+			    </div>
 			</div>
 
 			<div class="q_form">
 			<% if current_user && current_user.id = @user.id %>
 			<h2 class="q_form_title">Qの投稿</h2>
 			    <%= form_for @question do |f| %>
-			        <div class="target_form"><%= f.text_field :target, style: "width: 45%; border-radius: 100px;" %><strong>に聞きたい！</strong></div>
-			        <div><%= f.text_area :question, style: "width: 60%; height:100px; border-radius: 20px;" %></div>
+			        <div class="target_form">
+			        	<%= f.text_field :target, style: "width: 45%; border-radius: 100px;" %><strong>に聞きたい！</strong>
+			        </div>
+			        <div>
+			        	<%= f.text_area :question, style: "width: 60%; height:100px; border-radius: 20px;" %>
+			        </div>
 			        <%= f.submit "Qを投稿する", class:"btn btn-success" %>
 			    <% end %>
 			<% end %>

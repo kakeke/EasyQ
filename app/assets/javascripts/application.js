@@ -10,9 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
+//= require clipboard
 //= require activestorage
 //= require turbolinks
-//= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function(){  
+  
+  var clipboard = new Clipboard('.clipboard-btn');
+  console.log(clipboard);
+	
+});

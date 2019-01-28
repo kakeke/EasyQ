@@ -2,6 +2,12 @@
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10" style="text-align: center;">
+
+			<textarea class="q_url" id="bar"><%= request.url %></textarea>
+			<button class="clipboard-btn btn btn-success" data-clipboard-action="copy" data-clipboard-target="#bar">
+			このボタンを押してURLをコピーしてシェアしよう！
+		    </button>
+
 			<div class="user_link">
 				<h3><%= link_to user_path(@question.user) do %>
 					    <%= @question.user.name %>

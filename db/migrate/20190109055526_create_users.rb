@@ -6,13 +6,13 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :email
       t.string :image
-      t.string :image_id
+      t.string :user_image_id
       t.string :oauth_token
       t.datetime :oauth_expires_at
       t.string :profile
       t.datetime :last_login_at
       t.datetime :deleted_at
-      t.boolean :admin
+      t.boolean :admin, default: "false"
       
       t.timestamps
     end
