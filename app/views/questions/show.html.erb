@@ -2,6 +2,12 @@
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10" style="text-align: center;">
+			<% if current_user %>
+			<% else %>
+			    <div class="guide">
+			    	<h2>登録して自分のQを投稿してみよう！新規登録は<%= link_to "こちら", root_path %></h2>
+			    </div>
+			<% end %>
 
 			<textarea class="q_url" id="bar"><%= request.url %></textarea>
 			<button class="clipboard-btn btn btn-success" data-clipboard-action="copy" data-clipboard-target="#bar" data-toggle="popover" data-content="クリップボードにコピーしました。">
@@ -17,7 +23,7 @@
 			<div>
 				<%= image_tag @question.question_image %>
 				<% if current_user && current_user.id == @user.id %>
-				    <%= link_to "削除",question_path(@question.token), method: :delete %>
+				    <%= link_to "Qの削除",question_path(@question.token), method: :delete, class:"btn btn-danger" %>
 				<% end %>
 			</div>
 			<div class="question_data">
@@ -72,9 +78,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-$(function () {
-	$('[data-toggle="popover"]').popover();
-});
-</script>

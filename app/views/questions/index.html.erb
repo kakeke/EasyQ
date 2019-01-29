@@ -1,22 +1,16 @@
-<div class="container" style="margin-top: 50px">
-	<div class="row">
-		<div class="col-lg-2"></div>
-		<div class="col-lg-8" style="text-align: center;">
-            <h2><%= link_to user_path(@user.id) do %><%= @user.name %><% end %>さんが投稿したQ一覧</h2>
-            <% if @user.questions.blank? %>
-                    <h3>まだ投稿がありません</h3>
-            <% else %>
-			    <% @user.questions.order(created_at: "DESC").each do |q| %>
-			    <div class="q_list">
-			        <div class="q_image question_image">
-			            <%= link_to question_path(q.token) do %>
-			                <%= image_tag q.question_image, size: "425x220" %>
-			            <% end %>
-			        </div>
-			    </div>
-			    <% end %>
+<div class="q_all">
+	<h2><%= link_to user_path(@user.id) do %><%= @user.name %><% end %>さんが投稿したQ一覧</h2>
+	<% if @user.questions.blank? %>
+	<h3>まだ投稿がありません</h3>
+	<% else %>
+	<ol style="list-style: none;">
+		<% @user.questions.order(created_at: "DESC").each do |q| %>
+		<li class="question_image q_body">
+			<%= link_to question_path(q.token) do %>
+			<%= image_tag q.question_image, size: "425x220" %>
 			<% end %>
-		</div>
-		<div class="col-lg-2"></div>
-	</div>
+		</li>
+		<% end %>
+	</ol>
+	<% end %>
 </div>

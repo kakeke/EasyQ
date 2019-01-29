@@ -131,9 +131,15 @@ nav.globalMenuSp.active {
 }
 
 .q_slide {
-  margin: 40px auto;
-  padding: 20px;
-  width: 80%;
-  text-align: center;
-  background-color: #419be0;
+    margin: 40px auto;
+    padding: 20px;
+    width: 80%;
+    text-align: center;
+    background-color: #419be0;
+	box-shadow:0px 0px 10px;
+}
+
+.guide {
+	background-color: #5BFF7F;
+	margin: 20px auto;
 }
