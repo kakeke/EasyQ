@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_01_24_062149) do
   end
 
   create_table "answers", force: :cascade do |t|
+    t.string "nickname"
     t.string "answer"
     t.string "ip"
     t.integer "report", default: 0

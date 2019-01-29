@@ -27,7 +27,7 @@
 			    <% end %>
 
 			    <h2><%= @user.name %></h2>
-			    <h4>最終ログイン<%= @user.last_login_at %></h4>
+			    <h4>最終ログイン: <%= time_ago_in_words(@user.last_login_at) %>前</h4>
 			    <div class="user_profile">
 				    <%= @user.profile %>
 			    </div>

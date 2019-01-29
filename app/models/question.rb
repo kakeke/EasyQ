@@ -7,6 +7,7 @@ class Question < ApplicationRecord
 	before_create :generate_token
 
 	validates :question, presence: true, length: { maximum: 140 }
+	validates :target, presence: true, length: { maximum: 12 }
 	
   private
 

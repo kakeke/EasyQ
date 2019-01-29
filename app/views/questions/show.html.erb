@@ -42,17 +42,24 @@
 				    <h3>まだ回答がありません</h3>
 				<% else %>
 				    <% @question.answers.each do |f| %>
-				    <div class="answer_body">
-				        <%= f.answer %>
+				    <div class="popover right show" style="position:relative; max-width:100%;">
+				    	<div class="arrow"></div>
+				    	<h3 class="popover-title">
+				    		<%= f.nickname %>さん
+				    	</h3>
+				    	<div class="popover-content">
+				    		<p><%= f.answer %></p>
+				    	</div>
 				    </div>
 				    <% end %>
 				<% end %>
 			</div>
-            <div><%= notice %></div>
+            <div><h3><%= notice %></h3></div>           
 		    <div>
 			    <h2>回答する</h2>
 			    <%= form_for @answer do |f| %>
-			        <%= f.text_field :answer %>
+			        ニックネーム<%= f.text_field :nickname %><br>
+			        回答コメント<%= f.text_field :answer %><br>
 			        <%= f.hidden_field :question_id, :value => @question.id %>
 			    <%= f.submit "回答する" %>
 			    <% end %>

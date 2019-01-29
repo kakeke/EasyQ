@@ -10,6 +10,7 @@ class AnswersController < ApplicationController
 		   redirect_to question_path(question.token)
 		else
 		   redirect_to question_path(question.token)
+		   flash[:notice] = "何らかの問題で回答できませんでした。記入内容を確認してください。"
 		end
 	end
 
@@ -21,10 +22,6 @@ class AnswersController < ApplicationController
 
 	private
   	def answers_params
-  		params.require(:answer).permit(:answer, :ip, :question_id)
-  	end
-
-  	def report_params
-  		params.require(:answer).permit(:report)
+  		params.require(:answer).permit(:nickname, :answer, :ip, :question_id)
   	end
 end
