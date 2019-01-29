@@ -13,8 +13,8 @@
 //= require jquery
 //= require rails-ujs
 //= require clipboard
+//= require jquery.slick
 //= require activestorage
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
@@ -23,4 +23,29 @@ $(document).ready(function(){
   var clipboard = new Clipboard('.clipboard-btn');
   console.log(clipboard);
 	
+});
+
+$(function() {
+    $('.multiple-item').slick({
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 3000,
+          arrows: false,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          responsive: [{
+               breakpoint: 768,
+                    settings: {
+                         slidesToShow: 1,
+                         slidesToScroll: 1,
+               }
+          },{
+               breakpoint: 480,
+                    settings: {
+                         slidesToShow: 1,
+                         slidesToScroll: 1,
+                    }
+               }
+          ]
+     });
 });

@@ -3,7 +3,7 @@ class AnswersController < ApplicationController
 		answer = Answer.new(answers_params)
 		question = Question.find(answer.question_id)
 		answer.ip = request.remote_ip
-		if Answer.exists?(ip: answer.ip)
+		if Answer.exists?(ip: answer.ip, question_id: answer.question_id)
 		   redirect_to question_path(question.token)
 		   flash[:notice] = "既に回答済みのQです。"
 		elsif answer.save

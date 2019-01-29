@@ -3,7 +3,7 @@
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8" style="text-align: center;">
 			<div class="user_data">
-				<% if current_user && current_user.id = @user.id %>
+				<% if current_user && current_user.id == @user.id %>
 				    <% if current_user.profile.blank? %>
 				    <div class="profile-introduction">
 				    	<h4>あなたのことを知ってもらうために、自己紹介文を設定しましょう。</h4>
@@ -19,10 +19,11 @@
 			        <%= attachment_image_tag @user, :user_image, :fill, 180, 180, class:"img" %>
 			    <% end %>
 
-			    <% if current_user && current_user.id = @user.id %>
+			    <% if current_user && current_user.id == @user.id %>
 			        <%= link_to edit_user_path do %>
 			            <span class="setting_button"><%= icon("fas", "wrench", class: "fa-2x") %></span>
 			        <% end %>
+			    <% else %>
 			    <% end %>
 
 			    <h2><%= @user.name %></h2>
@@ -32,9 +33,9 @@
 			    </div>
 			</div>
 
+			<% if current_user && current_user.id == @user.id %>
 			<div class="q_form">
-			<% if current_user && current_user.id = @user.id %>
-			<h2 class="q_form_title">Qの投稿</h2>
+			    <h2 class="q_form_title">Qの投稿</h2>
 			    <%= form_for @question do |f| %>
 			        <div class="target_form">
 			        	<%= f.text_field :target, style: "width: 45%; border-radius: 100px;" %><strong>に聞きたい！</strong>
@@ -44,19 +45,26 @@
 			        </div>
 			        <%= f.submit "Qを投稿する", class:"btn btn-success" %>
 			    <% end %>
+			</div>
+			<% else %>
 			<% end %>
-		    </div>
 
 			<h2>最近投稿したQ</h2>
-			<% @user.questions.each do |q| %>
-			<div class="q_list">
-			    <div class="q_image">
-			        <%= link_to question_path(q.token) do %>
-			            <%= image_tag q.question_image, size: "425x220" %>
-			        <% end %>
+			<% if @user.questions.blank? %>
+			    <h3>まだ投稿がありません。</h3>
+			<% else %>
+			    <h4>（直近三件まで表示）</h4>
+			    <% @user.questions.order(created_at: "DESC").first(3).each do |q| %>
+			    <div class="q_list">
+			        <div class="q_image question_image">
+			            <%= link_to question_path(q.token) do %>
+			                <%= image_tag q.question_image, size: "425x220" %>
+			            <% end %>
+			        </div>
 			    </div>
-			</div>
-			<% end %>
+			    <% end %>
+			    <%= link_to "全てのQを見る",questions_path(@user), class:"btn btn-info" %>
+		    <% end %>
 		</div>
 		<div class="col-lg-2"></div>
 	</div>

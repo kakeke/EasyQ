@@ -17,11 +17,12 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import 'slick';
  * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'HG正楷書体-PRO'
+  font-family: 'HG正楷書体-PRO';
 }
 
 footer {
@@ -123,4 +124,16 @@ nav.globalMenuSp.active {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.question_image:hover {
+	opacity: 0.6;
+}
+
+.q_slide {
+  margin: 40px auto;
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+  background-color: #419be0;
 }

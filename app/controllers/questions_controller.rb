@@ -1,9 +1,15 @@
 class QuestionsController < ApplicationController
   include QuestionsHelper
+  def index
+    @user = User.find(params[:format])
+  end
+
 
   def show
   	@question = Question.find_by(token: params[:token])
+    @questions = Question.all
     @answer = Answer.new
+    @user = User.find_by(id: @question.user.id)
   end
 
   def create
@@ -20,7 +26,11 @@ class QuestionsController < ApplicationController
 
 
   def destroy
-  	
+  	question = Question.find_by(token: params[:token])
+    question.question_image.purge
+    question.delete
+    redirect_to user_path(current_user.id)
+    flash[:notice] = "Qを削除しました。"
   end
 
   private

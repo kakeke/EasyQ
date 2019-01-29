@@ -12,7 +12,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12" style="margin-top: 50px;">
-					<h3>外部サービスで簡単登録・ログイン</h3>
+					<h2>外部サービスで簡単登録・ログイン</h2>
 					<%= button_to "/auth/google_oauth2", id: "sign_in", class:"btn btn-danger" do %>
 					<h3><%= icon("fab", "google") %></i> Googleで登録・ログイン</h3>
 					<% end %>
@@ -28,6 +28,24 @@
 			</div>
 		</div>
 		<div class="col-lg-2"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="q_slide">
+			    <h3><strong>最近投稿されたQ</strong></h3>
+			    <div class="multiple-item">
+			        <% @questions.order(created_at: "DESC").first(10).each do |q| %>
+			            <div class="slide_content">
+			            	<h3><%= q.user.name %>さんのQ</h3>
+			            	<%= link_to question_path(q.token) do %>
+			            	<%= image_tag q.question_image, size: "425x220", class:"question_image" %>
+			                <% end %>
+			            </div>
+			        <% end %>
+		        </div>
+		    </div>
+		</div>
 	</div>
 </div>
 
