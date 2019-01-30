@@ -29,7 +29,7 @@ $(function() {
     $('.multiple-item').slick({
           infinite: true,
           autoplay: true,
-          autoplaySpeed: 3000,
+          autoplaySpeed: 2500,
           arrows: false,
           slidesToShow: 2,
           slidesToScroll: 2,
