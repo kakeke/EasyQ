@@ -6,7 +6,7 @@
 				<% if current_user && current_user.id == @user.id %>
 				    <% if current_user.profile.blank? %>
 				    <div class="profile-introduction">
-				    	<h4>あなたのことを知ってもらうために、自己紹介文を設定しましょう。</h4>
+				    	<h4>ようこそEasyQへ！あなたのことを知ってもらうために、自己紹介文を設定しましょう。</h4>
 		                <%= link_to "ユーザー設定画面へ", edit_user_path %>
 	                </div>
                     <% end %>
@@ -63,7 +63,7 @@
 			        </div>
 			    </div>
 			    <% end %>
-			    <%= link_to "全てのQを見る",questions_path(@user), class:"btn btn-info" %>
+			    <%= link_to "全てのQを見る",questions_path(@user), class:"btn btn-primary" %>
 		    <% end %>
 		</div>
 		<div class="col-lg-2"></div>

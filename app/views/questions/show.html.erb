@@ -55,11 +55,11 @@
 				<% end %>
 			</div>
             <div><h3><%= notice %></h3></div>           
-		    <div>
+		    <div class="answer_box">
 			    <h2>回答する</h2>
 			    <%= form_for @answer do |f| %>
-			        ニックネーム<%= f.text_field :nickname %><br>
-			        回答コメント<%= f.text_field :answer %><br>
+			        <p>ニックネーム<%= f.text_field :nickname %></p>
+			        <p>回答コメント<%= f.text_field :answer %></p>
 			        <%= f.hidden_field :question_id, :value => @question.id %>
 			    <%= f.submit "回答する" %>
 			    <% end %>
@@ -70,7 +70,7 @@
 	<div class="row">
 		<div class="col-lg-12">
 		    <div class="q_slide">
-			    <h3><strong>最近投稿されたQ</strong></h3>
+			    <h3><strong><%= icon("fas", "arrow-down") %>最新のQをピックアップ！<%= icon("fas", "arrow-down") %></strong></h3>
 			    <div class="multiple-item">
 			        <% @questions.order(created_at: "DESC").first(10).each do |q| %>
 			            <div class="slide_content">

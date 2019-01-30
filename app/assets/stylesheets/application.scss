@@ -126,6 +126,13 @@ nav.globalMenuSp.active {
     transform: rotate(45deg);
 }
 
+.question_image {
+	box-shadow:0px 0px 5px;
+	width: 425px;
+	margin: 0 auto;
+}
+
+
 .question_image:hover {
 	opacity: 0.6;
 }
@@ -135,7 +142,7 @@ nav.globalMenuSp.active {
     padding: 20px;
     width: 80%;
     text-align: center;
-    background-color: #419be0;
+    background-color: #77EEFF;
 	box-shadow:0px 0px 10px;
 }
 
