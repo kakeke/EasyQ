@@ -1,24 +1,7 @@
-# README
+# EasyQ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+不特定多数の人に質問をし、回答を募集できるサービスです。
 
-Things you may want to cover:
+[Peing](https://peing.net)や[Sarahah](https://www.sarahah.com/)のように質問のテキストが含まれた画像を生成し、SNSで共有することができます。h
+サンプルサイトはこちら https://easyq.xyz
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
